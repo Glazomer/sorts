@@ -7,9 +7,12 @@ const cd = fs.readdirSync('./'),
   tests = new Array(100)
     .fill(0)
     .map(() =>
-      new Array(1000).fill(0).map(() => Math.round(Math.random() * 1000))
+      new Array(100).fill(0).map(() => Math.round(Math.random() * 1000) - 500)
     ),
   results = tests.map((arr) => [...arr].sort((a, b) => a - b));
+
+tests.push([], [0]); // testing edge case
+results.push([], [0]);
 
 for (const file of cd) {
   if (file[0] != '.' && !filter.has(file)) {
