@@ -12,16 +12,13 @@ Implementation of in-place quick sort with stack.
 
 module.exports = function QuickSort(arr: number[]): number[] {
   const stack: number[][] = [];
-  // There is reason to sort only if more than two elements
   if (arr.length > 1) stack.push([0, arr.length - 1]);
-  // While we have unsorted subsequences, go on
   while (stack.length) {
-    // First (left) and last (right) element of subsequences
-    let [l, r] = stack.pop();
-    // left and right are initial boundaries of array, because we will modify l and r
-    const left = l,
-      right = r,
-      m = Math.floor((l + r) / 2); // Take middle element
+    // left and right boundaries of unsorted subsequences
+    const [left, right] = stack.pop();
+    let l = left,
+      r = right,
+      m = Math.floor((l + r) / 2);
 
     // Store [value, index]
     const threeValues = [
