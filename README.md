@@ -4,7 +4,12 @@ My own implemented main sorting algorithms.
 
 ## Installation and testing
 
-It's simple. Run `npm i` for istalling modules and `npm run test` for running `./test.ts` script file, that fetches all modules in `./sorts` folder and test it.
+Run
+
+npm i
+npm run test
+
+`npm run test` running script file, that fetches all modules in `./sorts` folder and test it.
 Our tests are randomly generated `100` arrays with size of `100` with random values in range `[-500; 500]`.
 
 ## Requirments
