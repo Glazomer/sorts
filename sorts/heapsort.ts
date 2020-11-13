@@ -33,13 +33,13 @@ module.exports = function HeapSort(arr: number[]): number[] {
   }
 
   // Making heap
-  // In order to iterage fron last to first index
+  // In order to iterage from last to first index
   arr.reduceRight((_, __, i): any => heapifyBottom(i), 0);
 
   for (let i = 0; i < arr.length; ++i) {
     const last = arr.length - 1 - i;
     [arr[last], arr[0]] = [arr[0], arr[last]];
-    heapifyBottom(0, last);
+    heapifyBottom(0, last); // passing limit pretending our array ends there
   }
 
   return arr;
