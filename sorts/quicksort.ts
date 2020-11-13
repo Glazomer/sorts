@@ -21,15 +21,12 @@ module.exports = function QuickSort(arr: number[]): number[] {
       r = right,
       m = Math.floor((l + r) / 2);
 
-    // Store [value, index]
-    const threeValues = [
-        [arr[l], l],
-        [arr[m], m],
-        [arr[r], r],
-      ], // Getting index of middle element, so called pivot, so arr[leftIndex] < arr[middleIndex] < arr[rightIndex]
-      middleIndex = threeValues.sort((a, b) => a[0] - b[0])[1][1];
+    const threeValues = [l, m, r],
+      pivotIndex = threeValues.sort((a, b) => arr[a] - arr[b])[1];
+    // Getting index of middle element, so called pivot, that arr[0] < arr[pivotIndex] < arr[2]
+
     // Store our middle element in right most index
-    [arr[right], arr[middleIndex]] = [arr[middleIndex], arr[right]];
+    [arr[right], arr[pivotIndex]] = [arr[pivotIndex], arr[right]];
     --r; // r or right most boundary reserved for our "middle" or pivot element, that will be swapped into correct place
 
     while (l <= r) {
@@ -41,6 +38,7 @@ module.exports = function QuickSort(arr: number[]): number[] {
       }
     }
 
+    // Returing pivot value to it correct place
     [arr[l], arr[right]] = [arr[right], arr[l]];
 
     // If any subsequence has more than 1 element, sort it too
