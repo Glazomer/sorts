@@ -20,10 +20,10 @@ module.exports = function HeapSort(arr: number[]): number[] {
       // pretend if we try to acces to element below limit it's undefined
       const l = left(i) < limit ? left(i) : arr.length,
         r = right(i) < limit ? right(i) : arr.length;
-      if (arr[r] > arr[i] && !(arr[r] < arr[l])) {
+      if (arr[r] > arr[i] && arr[r] >= arr[l]) {
         [arr[i], arr[r]] = [arr[r], arr[i]];
         i = r;
-      } else if (arr[l] > arr[i] && !(arr[l] < arr[r])) {
+      } else if (arr[l] > arr[i] && (arr[l] >= arr[r] || !(r in arr))) {
         [arr[i], arr[l]] = [arr[l], arr[i]];
         i = l;
       } else {
