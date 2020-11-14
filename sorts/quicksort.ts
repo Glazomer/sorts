@@ -7,7 +7,6 @@ Implementation of in-place quick sort with stack.
     worst time - O(N^2)
     
     memory - O(log N)
-    in-place - Yes
     stable - No
 */
 

@@ -7,7 +7,6 @@ Implementation of in-place heap sort.
     worst time - O(N log N)
 
     memory - O(1)
-    in-place - Yes
     stable - No
 */
 
