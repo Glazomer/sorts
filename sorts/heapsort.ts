@@ -13,7 +13,9 @@ Implementation of in-place heap sort.
 
 module.exports = function HeapSort(arr: number[]): number[] {
   const left = (i: number): number => i * 2 + 1,
-    right = (i: number): number => i * 2 + 2;
+    right = (i: number): number => i * 2 + 2,
+    swap = (i: number, j: number): number[] =>
+      ([arr[i], arr[j]] = [arr[j], arr[i]]);
 
   function heapifyBottom(i: number, limit = arr.length): void {
     while (1) {
@@ -21,10 +23,10 @@ module.exports = function HeapSort(arr: number[]): number[] {
       const l = left(i) < limit ? left(i) : arr.length,
         r = right(i) < limit ? right(i) : arr.length;
       if (arr[r] > arr[i] && arr[r] >= arr[l]) {
-        [arr[i], arr[r]] = [arr[r], arr[i]];
+        swap(i, r);
         i = r;
       } else if (arr[l] > arr[i] && (arr[l] >= arr[r] || !(r in arr))) {
-        [arr[i], arr[l]] = [arr[l], arr[i]];
+        swap(i, l);
         i = l;
       } else {
         break;
