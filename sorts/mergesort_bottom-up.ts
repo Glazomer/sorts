@@ -1,5 +1,5 @@
 /* 
-Implementation of in-place merge sort with stack.
+Implementation of in-place bottom-up merge sort with stack.
   complexity:
     best time - O(N log N)
     avg time - O(N log N)
@@ -9,7 +9,7 @@ Implementation of in-place merge sort with stack.
     stable - Yes
 */
 
-module.exports = function MergeSort(arr: number[]): number[] {
+module.exports = function MergeSortBottomUp(arr: number[]): number[] {
   const store = new Array(arr.length);
   // Len in length of subsequences that getting sorted
   for (let len = 2; len / 2 < arr.length; len *= 2) {
