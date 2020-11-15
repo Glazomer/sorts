@@ -7,7 +7,9 @@ const dir = './sorts/',
   tests = new Array(100)
     .fill(0)
     .map(() =>
-      new Array(100).fill(0).map(() => Math.round(Math.random() * 1000) - 500)
+      new Array(10000)
+        .fill(0)
+        .map(() => Math.round(Math.random() * 10000) - 5000)
     ),
   results = tests.map((arr) => [...arr].sort((a, b) => a - b));
 
@@ -27,8 +29,8 @@ for (const file of cd) {
       );
     }
     const [secEnd, nsecEnd] = process.hrtime(),
-      time = (secEnd - secStart) * 10 ** 9 + (nsecEnd - nsecStart);
-    console.log(`Finished ${file} in ${time} nanoseconds`);
+      time = secEnd - secStart + (nsecEnd - nsecStart) / 10 ** 9;
+    console.log(`Finished ${file} in ${time} seconds`);
   }
 }
 
