@@ -20,12 +20,6 @@ function MergeArrays(arr1: number[], arr2: number[], target: number[]) {
       target[i++] = arr2[i2++];
     }
   }
-
-  if (target.length != arr1.length + arr2.length) {
-    throw `Wrong target length. Expected: ${
-      arr1.length + arr2.length
-    } but got ${target.length}`;
-  }
 }
 
 module.exports = function MergeSortTopDown(arr: number[]): number[] {
