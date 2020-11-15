@@ -16,6 +16,7 @@ results.push([], [0]);
 
 for (const file of cd) {
   if (file[0] != '.') {
+    const [secStart, nsecStart] = process.hrtime();
     const sort = require(dir + file) as Sort;
     for (const i in tests) {
       const testCase = tests[i],
@@ -25,6 +26,9 @@ for (const file of cd) {
         `./${file} failed to test ${testCase.toString()}`
       );
     }
+    const [secEnd, nsecEnd] = process.hrtime(),
+      time = (secEnd - secStart) * 10 ** 9 + (nsecEnd - nsecStart);
+    console.log(`Finished ${file} in ${time} nanoseconds`);
   }
 }
 
