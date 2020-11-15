@@ -4,10 +4,12 @@ type Sort = (arr: number[]) => number[];
 
 const dir = './sorts/',
   cd = fs.readdirSync(dir),
-  tests = new Array(100)
+  tests = new Array(1000)
     .fill(0)
     .map(() =>
-      new Array(100).fill(0).map(() => Math.round(Math.random() * 1000) - 500)
+      new Array(1000)
+        .fill(0)
+        .map(() => Math.round(Math.random() * 10000) - 5000)
     ),
   results = tests.map((arr) => [...arr].sort((a, b) => a - b));
 
