@@ -29,8 +29,8 @@ for (const file of cd) {
       );
     }
     const [secEnd, nsecEnd] = process.hrtime(),
-      time = (secEnd - secStart) * 10 ** 9 + (nsecEnd - nsecStart);
-    console.log(`Finished ${file} in ${time} nanoseconds`);
+      time = secEnd - secStart + (nsecEnd - nsecStart) / 10 ** 9;
+    console.log(`Finished ${file} in ${time} seconds`);
   }
 }
 
