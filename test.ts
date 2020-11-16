@@ -4,12 +4,13 @@ type Sort = (arr: number[]) => number[];
 
 const dir = './sorts/',
   cd = fs.readdirSync(dir),
-  testsCases = new Array(100)
+  whileList = process.argv.slice(2),
+  testsCases = new Array(1000)
     .fill(0)
     .map(() =>
-      new Array(1000)
+      new Array(5000)
         .fill(0)
-        .map(() => Math.round(Math.random() * 100000) - 50000)
+        .map(() => Math.round(Math.random() * 10000) - 5000)
     ),
   testsResults = testsCases.map((arr) => [...arr].sort((a, b) => a - b));
 
@@ -17,7 +18,10 @@ testsCases.push([], [0]); // testing edge cases
 testsResults.push([], [0]);
 
 for (const file of cd) {
-  if (file[0] != '.') {
+  if (
+    file[0] != '.' &&
+    (!whileList.length || whileList.some((str) => file.indexOf(str) == 0))
+  ) {
     const sort = require(dir + file) as Sort,
       tests = testsCases.map((test) => [...test]),
       [secStart, nsecStart] = process.hrtime();

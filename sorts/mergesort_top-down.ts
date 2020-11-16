@@ -9,7 +9,7 @@ Implementation of in-place top-down merge sort with stack.
     stable - Yes
 */
 
-function MergeArrays(arr1: number[], arr2: number[], target: number[]) {
+function MergeArrays(target: number[], arr1: number[], arr2: number[]) {
   let i, i1, i2;
   i = i1 = i2 = 0;
 

@@ -29,7 +29,8 @@ module.exports = function MergeSortBottomUp(arr: number[]): number[] {
         }
       }
     }
-    Object.assign(arr, store);
+
+    arr = [...store];
   }
   return arr;
 };
