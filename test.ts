@@ -21,7 +21,7 @@ for (const file of cd) {
     const [secStart, nsecStart] = process.hrtime();
     const sort = require(dir + file) as Sort;
     for (const i in tests) {
-      const testCase = tests[i],
+      const testCase = [...tests[i]],
         result = results[i];
       console.assert(
         sort(testCase).toString() == result.toString(),
