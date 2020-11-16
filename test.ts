@@ -7,13 +7,13 @@ const dir = './sorts/',
   testsCases = new Array(100)
     .fill(0)
     .map(() =>
-      new Array(10000)
+      new Array(1000)
         .fill(0)
-        .map(() => Math.round(Math.random() * 10000) - 5000)
+        .map(() => Math.round(Math.random() * 100000) - 50000)
     ),
   testsResults = testsCases.map((arr) => [...arr].sort((a, b) => a - b));
 
-testsCases.push([], [0]); // testing edge case
+testsCases.push([], [0]); // testing edge cases
 testsResults.push([], [0]);
 
 for (const file of cd) {
