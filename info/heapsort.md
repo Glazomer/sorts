@@ -6,9 +6,9 @@ In computer science, [heapsort](https://en.wikipedia.org/wiki/Heapsort) is a com
 
 ## Complexity (moving elements)
 
-**Best time**: O(N + N \* log<sub>2</sub>(N) / 2)
-**Avg time**: O(2 \* N + N \* log<sub>2</sub>(N) / 2)
-**Worst time**: O(2 \* N + N \* log<sub>2</sub>(N) / 2)
+**Best time**: O(N + N \* log<sub>2</sub>(N) / 2)<br/>
+**Avg time**: O(2 \* N + N \* log<sub>2</sub>(N) / 2)<br/>
+**Worst time**: O(2 \* N + N \* log<sub>2</sub>(N) / 2)<br/>
 
 ## Complexity (moving space):
 

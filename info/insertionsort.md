@@ -13,9 +13,9 @@
 
 ## Complexity (moving elements)
 
-**Best time**: O(N)
-**Avg time**: O(N<sup>2</sup> / 4)
-**Worst time**: O(N<sup>2</sup> / 2)
+**Best time**: O(N)<br/>
+**Avg time**: O(N<sup>2</sup> / 4)<br/>
+**Worst time**: O(N<sup>2</sup> / 2)<br/>
 
 ## Complexity (moving space):
 

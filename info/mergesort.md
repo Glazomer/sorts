@@ -6,9 +6,9 @@ In computer science, [merge sort](https://en.wikipedia.org/wiki/Merge_sort) (als
 
 ## Complexity (moving elements)
 
-**Best time**: O(2 \* N \* log<sub>2</sub>(N))
-**Avg time**: O(2 \* N \* log<sub>2</sub>(N))
-**Worst time**: O(2 \* N \* log<sub>2</sub>(N))
+**Best time**: O(2 \* N \* log<sub>2</sub>(N))<br/>
+**Avg time**: O(2 \* N \* log<sub>2</sub>(N))<br/>
+**Worst time**: O(2 \* N \* log<sub>2</sub>(N))<br/>
 
 ## Complexity (moving space):
 

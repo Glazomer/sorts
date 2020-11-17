@@ -6,9 +6,9 @@
 
 ## Complexity (moving elements):
 
-**Best**: O(N \* log<sub>2</sub>(N) / 2)
-**Avg**: O(N \* log<sub>2</sub>(N))
-**Worst**: O(N<sup>2</sup> / 2)
+**Best**: O(N \* log<sub>2</sub>(N) / 2)<br/>
+**Avg**: O(N \* log<sub>2</sub>(N))<br/>
+**Worst**: O(N<sup>2</sup> / 2)<br/>
 
 ## Complexity (moving space):
 
