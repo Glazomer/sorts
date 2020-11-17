@@ -25,3 +25,10 @@ I implemented all of my sorting algorithms using typescript. In order to run it,
 ## Implemented algorithms
 
 _This section will be extended_
+
+## Sorts info
+
+1. [Heap sort](./heapsort.md)
+2. [Insertion sort](./insertionsort.md)
+3. [Merge sort](./mergesort.md)
+4. [Quick sort](./quicksort.md)
