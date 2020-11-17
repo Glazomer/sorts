@@ -25,6 +25,6 @@ I implemented all of my sorting algorithms using typescript. In order to run it,
 ## Sorts info
 
 1. [Heap sort](./info/heapsort.md)
-2. [Insertion sort](./iinfo/nsertionsort.md)
+2. [Insertion sort](./info/insertionsort.md)
 3. [Merge sort](./info/mergesort.md)
 4. [Quick sort](./info/quicksort.md)
