@@ -6,7 +6,7 @@
 
 1. Simple implementation three-line C version, and a five-line optimized version
 2. Efficient for (quite) small data sets, much like other quadratic sorting algorithms
-3. More efficient in practice than most other simple quadratic (i.e., O(n2)) algorithms such as selection sort or bubble sort
+3. More efficient in practice than most other simple quadratic (i.e., O(N<sup>2</sup>)) algorithms such as selection sort or bubble sort
 4. Stable
 5. In-place
 6. Can sort as receives it

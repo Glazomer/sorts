@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import TestsGenerator, { TestsAndResults } from './tools/testsgenerator';
 import TestWith, { Sort } from './tools/testwith';
+import testConfig from './testconfig';
 
 const dir = './sorts/',
   whiteList = process.argv.slice(2);
@@ -11,52 +12,10 @@ if (whiteList.length) {
   cd = cd.filter((f) => whiteList.some((str) => f.indexOf(str) == 0));
 }
 
-const testSets: { [key: string]: TestsAndResults } = {
-  sortedMid: TestsGenerator({
-    fromVal: -2000,
-    toVal: 2000,
-    arraysLength: 4000,
-    arraysAmount: 1000,
-    sort: (a, b) => a - b,
-  }),
-  reverseMid: TestsGenerator({
-    fromVal: -2000,
-    toVal: 2000,
-    arraysLength: 4000,
-    arraysAmount: 1000,
-    sort: (a, b) => b - a,
-  }),
-  fewRandomMid: TestsGenerator({
-    fromVal: -100,
-    toVal: 100,
-    arraysLength: 4000,
-    arraysAmount: 1000,
-  }),
-  randomTiny: TestsGenerator({
-    fromVal: -20,
-    toVal: 20,
-    arraysLength: 40,
-    arraysAmount: 100000,
-  }),
-  randomSmall: TestsGenerator({
-    fromVal: -200,
-    toVal: 200,
-    arraysLength: 400,
-    arraysAmount: 10000,
-  }),
-  randomMid: TestsGenerator({
-    fromVal: -2000,
-    toVal: 2000,
-    arraysLength: 4000,
-    arraysAmount: 1000,
-  }),
-  randomBig: TestsGenerator({
-    fromVal: -10_000,
-    toVal: 10_000,
-    arraysLength: 5000,
-    arraysAmount: 1000,
-  }),
-};
+const testSets: { [key: string]: TestsAndResults } = {};
+for (const key in testConfig) {
+  testSets[key] = TestsGenerator(testConfig[key]);
+}
 
 const sorts: Sort[] = [];
 
