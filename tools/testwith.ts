@@ -5,19 +5,24 @@ export type Sort = (arr: number[]) => number[];
 export default function TestWith(
   sort: Sort,
   tests: number[][],
-  results: string[]
+  results: string[],
+  readonlyTests?: ReadonlyArray<number>[]
 ): [number, number] {
   const [secStart, nsecStart] = process.hrtime();
   for (let i = 0; i < tests.length; ++i) {
     if (sort(tests[i]).toString() !== results[i]) {
-      fs.appendFile(
-        'log.txt',
-        `#${i}: Expected ${results[i]}\n, but got ${sort(tests[i]).toString()}`,
-        function (err) {
-          if (err) throw err;
-        }
+      const errorMsg = `Wrong result with function ${sort.name}! (see log.txt file for more details)`;
+
+      fs.appendFileSync(
+        './log.txt',
+        JSON.stringify({
+          errtype: 'Wrong answer!',
+          initial: readonlyTests ? readonlyTests[i] : 'Copy was not provided!',
+          expected: `[${results[i]}]`,
+          recieved: tests[i],
+        }) + '\n'
       );
-      throw `Wrong result with function ${sort.name}! (see log.txt file for more details)`;
+      throw errorMsg;
     }
   }
   const [secEnd, nsecEnd] = process.hrtime();

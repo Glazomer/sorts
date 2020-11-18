@@ -25,10 +25,10 @@ for (const file of cd) {
 
 for (const set in testSets) {
   for (const sort of sorts) {
-    const [immutableTests, result] = testSets[set],
-      tests = immutableTests.map((test) => [...test]);
+    const [readonlyTests, result] = testSets[set],
+      tests = readonlyTests.map((test) => [...test]);
 
-    const [sec, nsec] = TestWith(sort, tests, result);
+    const [sec, nsec] = TestWith(sort, tests, result, readonlyTests);
 
     const totalTime = sec + nsec / 10 ** 9;
     console.log(
