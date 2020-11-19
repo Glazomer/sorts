@@ -1,0 +1,24 @@
+name: ci
+
+on: [push]
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - name: npm install, and test
+        run: |
+          npm i
+          ls /home/runner/work/sorts/sorts/node_modules/ts-node/
+          echo "###"
+          ls /home/runner/work/sorts/sorts/node_modules/ts-node/src/index.ts
+          npm test
+      - name: Storing test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: test-results.md
