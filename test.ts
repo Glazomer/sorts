@@ -38,7 +38,7 @@ async function main(argv = process.argv) {
     console.table(results[set]);
   }
 
-  fs.writeFileSync('./test_result.md', createTable(results));
+  fs.writeFileSync('./test_results.md', createTable(results));
 }
 
 main();
