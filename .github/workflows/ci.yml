@@ -14,6 +14,8 @@ jobs:
         run: |
           npm i
           ls ./node_modules/ts-node/
+          echo "######"
+          ls /home/runner/work/sorts/sorts/node_modules/ts-node/
           npm test
       - name: Storing test results
         uses: actions/upload-artifact@v2
