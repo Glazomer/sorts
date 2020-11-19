@@ -13,6 +13,7 @@ jobs:
       - name: npm install, and test
         run: |
           npm i
+          ls ./node_modules/ts-node/
           npm test
       - name: Storing test results
         uses: actions/upload-artifact@v2
