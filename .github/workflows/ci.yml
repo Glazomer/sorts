@@ -18,4 +18,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: test results
-          path: test_results.md
+          path: test_results.html
