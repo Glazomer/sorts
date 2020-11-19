@@ -2,6 +2,10 @@ import * as fs from 'fs';
 import TestsGenerator, { TestsAndResults } from './tools/testsGenerator';
 import TestWith from './tools/testSortModule';
 import testConfig from './testconfig';
+import createTable from './tools/createTable';
+import { TestResults } from './tools/testSortModule';
+
+export type Result = { [key: string]: { [key: string]: TestResults } };
 
 async function main(argv = process.argv) {
   const dir = './sorts/',
@@ -18,22 +22,23 @@ async function main(argv = process.argv) {
     testSets[key] = TestsGenerator(testConfig[key]);
   }
 
+  const results = {} as any;
   for (const set in testSets) {
-    const testSet = testSets[set],
-      results = {} as any;
+    const testSet = testSets[set];
+    results[set] = {};
     for (const sortFile of cd) {
       const sortPath = '../sorts/' + sortFile,
         sortName = sortFile.split('.')[0];
 
       const res = await TestWith(sortPath, testSet, { timeout: 15_000 });
       res.time = Math.round(res.time * 1e7) / 1e7;
-      results[sortName] = res;
+      results[set][sortName] = res;
     }
-    console.log(set);
-    console.table(results);
+    // console.log(set);
+    // console.table(results[set]);
   }
 
-  console.log('Finished all tests');
+  fs.writeFileSync('./test-result.md', createTable(results));
 }
 
 main();
