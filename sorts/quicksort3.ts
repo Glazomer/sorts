@@ -30,7 +30,11 @@ module.exports = function QuickSort3(arr: number[]): number[] {
     // If we have reverse sorted Array we will not have O(N^2) if we choose pivots from middle
     const mid = Math.floor((right - left) / 3) + left;
     if (arr[left] < arr[mid] && arr[mid] < arr[right]) {
-      [arr[left], arr[mid]] = [arr[mid], arr[left]];
+      if (arr[right] - arr[mid] > arr[mid] - arr[left]) {
+        [arr[left], arr[mid]] = [arr[mid], arr[left]];
+      } else {
+        [arr[right], arr[mid]] = [arr[mid], arr[right]];
+      }
     }
 
     // Literally just "Dutch flag problem"
