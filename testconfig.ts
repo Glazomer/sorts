@@ -1,30 +1,6 @@
 import { GeneratorParams } from './tools/testsgenerator';
 
 const testSets: { [key: string]: GeneratorParams } = {
-  randomTiny: {
-    fromVal: -25,
-    toVal: 25,
-    arraysLength: 50,
-    arraysAmount: 100000,
-  },
-  randomSmall: {
-    fromVal: -250,
-    toVal: 250,
-    arraysLength: 500,
-    arraysAmount: 10000,
-  },
-  randomMid: {
-    fromVal: -2500,
-    toVal: 2500,
-    arraysLength: 5000,
-    arraysAmount: 1000,
-  },
-  randomBig: {
-    fromVal: -50_000,
-    toVal: 50_000,
-    arraysLength: 100_000,
-    arraysAmount: 10,
-  },
   reverseMid: {
     fromVal: -2500,
     toVal: 2500,
@@ -50,6 +26,36 @@ const testSets: { [key: string]: GeneratorParams } = {
     toVal: 1000000,
     arraysLength: 5000,
     arraysAmount: 1000,
+  },
+  randomTiny: {
+    fromVal: -25,
+    toVal: 25,
+    arraysLength: 50,
+    arraysAmount: 100_000,
+  },
+  randomSmall: {
+    fromVal: -250,
+    toVal: 250,
+    arraysLength: 500,
+    arraysAmount: 10_000,
+  },
+  randomMid: {
+    fromVal: -2500,
+    toVal: 2500,
+    arraysLength: 5000,
+    arraysAmount: 1000,
+  },
+  randomBig: {
+    fromVal: -25_000,
+    toVal: 25_000,
+    arraysLength: 50_000,
+    arraysAmount: 100,
+  },
+  randomGiant: {
+    fromVal: -500_000,
+    toVal: 500_000,
+    arraysLength: 500_000,
+    arraysAmount: 10,
   },
 };
 

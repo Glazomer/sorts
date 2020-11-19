@@ -1,41 +1,39 @@
 import * as fs from 'fs';
-import TestsGenerator, { TestsAndResults } from './tools/testsgenerator';
-import TestWith, { Sort } from './tools/testwith';
+import TestsGenerator, { TestsAndResults } from './tools/testsGenerator';
+import TestWith from './tools/testSortModule';
 import testConfig from './testconfig';
 
-const dir = './sorts/',
-  whiteList = process.argv.slice(2);
+async function main(argv = process.argv) {
+  const dir = './sorts/',
+    whiteList = argv.slice(2);
 
-let cd = fs.readdirSync(dir).filter((f) => f[0] != '.');
+  let cd = fs.readdirSync(dir).filter((f) => f[0] != '.');
 
-if (whiteList.length) {
-  cd = cd.filter((f) => whiteList.some((str) => f.indexOf(str) == 0));
-}
-
-const testSets: { [key: string]: TestsAndResults } = {};
-for (const key in testConfig) {
-  testSets[key] = TestsGenerator(testConfig[key]);
-}
-
-const sorts: Sort[] = [];
-
-for (const file of cd) {
-  sorts.push(require(dir + file) as Sort);
-}
-
-for (const set in testSets) {
-  for (const sort of sorts) {
-    const [readonlyTests, result] = testSets[set],
-      tests = readonlyTests.map((test) => [...test]);
-
-    const [sec, nsec] = TestWith(sort, tests, result, readonlyTests);
-
-    const totalTime = sec + nsec / 10 ** 9;
-    console.log(
-      `Finished ${set} tests set on ${sort.name} in ${totalTime} seconds`
-    );
+  if (whiteList.length) {
+    cd = cd.filter((f) => whiteList.some((str) => f.indexOf(str) == 0));
   }
-  console.log('\n#############################################\n');
+
+  const testSets: { [key: string]: TestsAndResults } = {};
+  for (const key in testConfig) {
+    testSets[key] = TestsGenerator(testConfig[key]);
+  }
+
+  for (const set in testSets) {
+    const testSet = testSets[set],
+      results = {} as any;
+    for (const sortFile of cd) {
+      const sortPath = '../sorts/' + sortFile,
+        sortName = sortFile.split('.')[0];
+
+      const res = await TestWith(sortPath, testSet, { timeout: 15_000 });
+      res.time = Math.round(res.time * 1e7) / 1e7;
+      results[sortName] = res;
+    }
+    console.log(set);
+    console.table(results);
+  }
+
+  console.log('Finished all tests');
 }
 
-console.log('Finished all tests');
+main();

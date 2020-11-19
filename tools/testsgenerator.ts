@@ -8,7 +8,10 @@ export type GeneratorParams = {
   sort?: SortingFn;
 };
 
-export type TestsAndResults = [number[][], string[]];
+export type TestsAndResults = [
+  ReadonlyArray<number>[],
+  ReadonlyArray<number>[]
+];
 
 export default function TestsGenerator({
   fromVal,
@@ -32,7 +35,7 @@ export default function TestsGenerator({
     }
 
     testsCases[i] = Object.freeze(testCase);
-    testsResults[i] = [...testCase].sort((a, b) => a - b).toString();
+    testsResults[i] = Object.freeze([...testCase].sort((a, b) => a - b));
   }
 
   Object.freeze(testsCases);
