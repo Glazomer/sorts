@@ -34,11 +34,11 @@ async function main(argv = process.argv) {
       res.time = Math.round(res.time * 1e7) / 1e7;
       results[set][sortName] = res;
     }
-    // console.log(set);
-    // console.table(results[set]);
+    console.log(set);
+    console.table(results[set]);
   }
 
-  fs.writeFileSync('./test-result.md', createTable(results));
+  fs.writeFileSync('./test_result.md', createTable(results));
 }
 
 main();
