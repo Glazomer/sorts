@@ -1,13 +1,15 @@
-name: Node CI
+name: ci
 
 on: [push]
 
 jobs:
   build_and_test:
-    runs-on: macos-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    runs-on: ubuntu-latest
+    steps::
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
       - name: npm install, and test
         run: |
           npm i
