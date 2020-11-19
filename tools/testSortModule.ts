@@ -1,4 +1,4 @@
-import { TestsAndResults } from './testsgenerator';
+import { TestsAndResults } from './testsGenerator';
 import WorkerTS from './workerTS';
 
 export type Options = { timeout: number };

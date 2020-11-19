@@ -1,4 +1,4 @@
-import { GeneratorParams } from './tools/testsgenerator';
+import { GeneratorParams } from './tools/testsGenerator';
 
 const testSets: { [key: string]: GeneratorParams } = {
   reverseMid: {
