@@ -8,7 +8,7 @@ export default function createTable(data: Result): string {
       keys = Object.keys(data[set][Object.keys(data[set])[0]]),
       table = [
         `<thead><tr>${
-          '<th>' + ['sort', ...keys].join('<th/><th>') + '</th>'
+          '<th>' + ['sort', ...keys].join('</th><th>') + '</th>'
         }</tr></thead>`,
       ];
     table.push('<tbody>');
