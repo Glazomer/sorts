@@ -14,7 +14,7 @@ jobs:
         run: |
           npm i
           npm test
-        - name: Commit files
+      - name: Commit files
         id: commit
         run: |
           git config --local user.email "action@github.com"
