@@ -32,6 +32,9 @@ async function main(argv = process.argv) {
         sortName = sortFile.split('.')[0];
 
       const res = await TestWith(sortPath, testSet, { timeout: 15_000 });
+      if (res.status === 'error') {
+        throw new Error('Wrong result with ' + sortName);
+      }
       res.time = Math.round(res.time * 1e7) / 1e7;
       results[set][sortName] = res;
     }
