@@ -2,7 +2,8 @@ import * as fs from 'fs';
 import TestsGenerator, { TestsAndResults } from './tools/testsGenerator';
 import TestWith from './tools/testSortModule';
 import testConfig from './testconfig';
-import createTable from './tools/createTableHTML';
+import createTableMD from './tools/createTableMD';
+import createTableHTML from './tools/createTableHTML';
 import { TestResults } from './tools/testSortModule';
 
 export type Result = { [key: string]: { [key: string]: TestResults } };
@@ -38,7 +39,8 @@ async function main(argv = process.argv) {
     console.table(results[set]);
   }
 
-  fs.writeFileSync('./test_results.html', createTable(results));
+  fs.writeFileSync('./test_results.md', createTableMD(results));
+  fs.writeFileSync('./test_results.html', createTableHTML(results));
 }
 
 main();

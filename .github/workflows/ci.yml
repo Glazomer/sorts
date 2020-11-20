@@ -19,7 +19,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "github-actions"
-          git add -f test_results.html
+          git add -f test_results.*
           if [-z "$(git status --porcelain)"]; then
             echo "::set-output name=push::false"
           else
