@@ -1,5 +1,3 @@
 .DS_Store
 node_modules/
 /log.txt
-/test_results.md
-/test_results.html
