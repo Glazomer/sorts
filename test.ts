@@ -4,7 +4,7 @@ import TestWith from './tools/testSortModule';
 import testConfig from './testconfig';
 import createTableMD from './tools/createTableMD';
 import createTableHTML from './tools/createTableHTML';
-import { TestResults } from './tools/testSortModule';
+import { TestResults } from './tools/runSortModuleInThread';
 
 export type Result = { [key: string]: { [key: string]: TestResults } };
 

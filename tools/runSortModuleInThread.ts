@@ -1,16 +1,28 @@
+import { TestsAndResults } from './testsGenerator';
+
 const { isMainThread, parentPort, workerData } = require('worker_threads');
 
 if (isMainThread) {
   throw new Error('This worker should not be used as a module!');
 }
 
-const { sortPath, testSet } = workerData,
+const status = ['ok', 'error', 'timeout'] as const;
+export type TestResults = {
+  status: typeof status[number];
+  time: number;
+};
+
+const { sortPath, testSet } = workerData as {
+    sortPath: string;
+    testSet: TestsAndResults;
+  },
   sort = require(sortPath),
-  [tests, results] = testSet,
-  result = { status: 'ok', time: 0 };
+  [tests, resultsArr] = testSet,
+  results = new Array<string>(resultsArr.length),
+  result: TestResults = { status: 'ok', time: 0 };
 
 for (let i = 0; i < results.length; ++i) {
-  results[i] = results[i].toString();
+  results[i] = resultsArr[i].toString();
 }
 
 const [secStart, nsecStart] = process.hrtime();

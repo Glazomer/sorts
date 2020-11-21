@@ -1,13 +1,8 @@
 import { TestsAndResults } from './testsGenerator';
 import WorkerTS from './workerTS';
+import { TestResults } from './runSortModuleInThread';
 
 export type Options = { timeout: number };
-
-const status = ['ok', 'error', 'timeout'] as const;
-export type TestResults = {
-  status: typeof status[number];
-  time: number;
-};
 
 const pathToWorker = './tools/runSortModuleInThread.ts';
 
@@ -18,11 +13,11 @@ export default function TestWith(
 ): Promise<TestResults> {
   return new Promise(function (resolve, reject) {
     let timoutID;
-    function res(args) {
+    function res(args: TestResults) {
       clearTimeout(timoutID);
       resolve(args);
     }
-    function rej(args) {
+    function rej(args: TestResults) {
       clearTimeout(timoutID);
       reject(args);
     }
